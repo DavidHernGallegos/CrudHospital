@@ -1,0 +1,41 @@
+﻿
+@model ML.Hospital
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Agregar Hospitales</h1>
+
+<div class="container-fluid">
+
+@using (Html.BeginForm("Form", "Hospital", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-control">
+        <div class="row">
+            <div class="col-3">
+                <label>Nombre Hospital</label>
+                <input  class="input-text" placeholder="Ingresa tu nombre"/>
+            </div>
+            <div class="col-3">
+                <label>Direccion</label>
+                <input class="input-text" placeholder="Ingresa la direccion" />
+            </div>
+            <div class="col-3">
+                <label>Ingresa el año de construccion</label>
+                <input class="input-text" placeholder="DD/MM/AA" />
+            </div>
+            <div class="col-3">
+                <label>Ingresa la capacidad</label>
+                <input type="number" />
+            </div>
+            <div class="col-3">
+                <label>IdEspecialidad</label>
+                <input type="number" />
+            </div>
+        </div>
+
+            <button type="submit" class="btn btn-info">Agregar</button>
+    </div>
+}
+</div>

@@ -1,0 +1,46 @@
+﻿
+@model ML.Hospital
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Hospitales</h1>
+@using (Html.BeginForm("Form", "Hospital", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+   <button type="submit" class="btn btn-info">Agregar</button>
+}
+
+<div class="container">
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th> Editar</th>
+                <th>IdHospital</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Año Construccion</th>
+                <th>Capacidad</th>
+                <th>IdEspecialidad</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            @foreach(ML.Hospital hospital in Model.Hospitales)
+            {
+                <tr>
+                    <td>@Html.ActionLink("Editar","GetAll", "Hospital", new { IdHospital = hospital.IdHospital }, htmlAttributes: new { @class = "btn btn-warning"})</td>
+                    <td>@hospital.IdHospital</td>
+                    <td>@hospital.Nombre</td>
+                    <td>@hospital.Direccion</td>
+                    <td>@hospital.AñoCostruccion</td>
+                    <td>@hospital.Capacidad</td>
+                    <td>@hospital.Especialidad.IdEspecialidad</td>
+                    <td>@Html.ActionLink("Eliminar","Delete", "Hospital", new { IdHospital = hospital.IdHospital }, htmlAttributes: new { @class = "btn btn-danger"})</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
